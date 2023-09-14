@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const cells = document.querySelectorAll(".value");
   let selectedCell = null;
+
   cells.forEach((cell) => {
     cell.addEventListener("click", () => {
       if (selectedCell) {
@@ -10,14 +11,13 @@ document.addEventListener("DOMContentLoaded", function () {
       selectedCell = cell;
     });
   });
+
   const candidateSwitch = document.getElementById("candidate-switch");
 
   candidateSwitch.addEventListener("change", () => {
-    
     if (candidateSwitch.checked) {
- 
       if (selectedCell) {
-        const candidates = selectedCell.previousElementSibling;
+        const candidates = selectedCell.previousElementSibling; // .candidates span
         const candidateNumber = selectedCell.textContent;
         const candidateNumbers = candidates.textContent.split("").filter((num) => num !== candidateNumber);
 
@@ -35,9 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   numberControls.forEach((button) => {
     button.addEventListener("click", () => {
-    
       if (selectedCell && !candidateSwitch.checked) {
-       
         selectedCell.textContent = button.textContent;
       }
     });
